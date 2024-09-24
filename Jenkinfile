@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    
+    environment{
+        DIRECTORY_PATH = '/var/jenkins_home/workspace/5.1P_pipeline_job'
+        TESTING_ENVIRONMENT = 'MANUAL'
+        PRODUCTION_ENVIRONMENT = 'PRODUCING_OUTPUT'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'fetch the source code from the directory path specified by the environment variable'
+                echo "${env.DIRECTORY_PATH}"
+                echo 'Compile the code and generate any ncecessary artifacts' 
+            }
+        }
+        stage('Test'){
+            steps{
+                echo 'Unit tests are being performed'
+                echo 'Integration tests are being performed'
+                echo "TESTING_ENVIRONMENT= ${env.TESTING_ENVIRONMENT}"
+            }
+        }
+        stage('Code'){
+            steps{
+                echo "checking the quality of the code on ${env.TESTING_ENVIRONMENT}"
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo "Deploy the application into the testing environment specified by environment variable if the code is not upto quality i.e., ${env.PRODUCTION_ENVIRONMENT}"
+            }
+        }
+        stage('Approval'){
+            steps{
+                sleep 10
+            }
+        }
+        stage('Deploy to the Production'){
+            steps{
+                echo "The application is being deployed to production environment: ${env.PRODUCTION_ENVIRONMENT}"
+            }
+        }
+    }
+}
