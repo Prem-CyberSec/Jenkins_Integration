@@ -46,14 +46,14 @@ pipeline {
     } 
     post{ 
         success { 
-            mail to: 'kali.linuz09@gmail.com',
+            emailext to: 'kali.linuz09@gmail.com',
                 subject: 'Jenkins success', 
                 body: 'Jenkins exp6: success', 
                 attachLog: true
                  
         } 
         failure { 
-            mail to: 'kali.linuz09@gmail.com', 
+            emailext to: 'kali.linuz09@gmail.com', 
                 subject: 'Jenkins failure', 
                 body: 'Jenkins exp6: failure', 
                 attachLog: true
