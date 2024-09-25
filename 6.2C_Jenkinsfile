@@ -46,10 +46,10 @@ pipeline {
     } 
     post{ 
         success { 
-            emailext attachLog: true, body: 'Attached the build log', subject: '6.2C build Successfull', to: 'kali.linuz09@gmail.com'
+            mail body: 'Attached the build log', subject: '6.2C build Successfull', to: 'kali.linuz09@gmail.com'
         } 
         failure { 
-            emailext attachLog: true, body: 'Attached the build log', subject: '6.2C build failure', to: 'kali.linuz09@gmail.com' 
+            mail body: 'Attached the build log', subject: '6.2C build failure', to: 'kali.linuz09@gmail.com' 
         } 
     } 
 } 
