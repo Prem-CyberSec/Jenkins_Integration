@@ -46,23 +46,10 @@ pipeline {
     } 
     post{ 
         success { 
-<<<<<<< HEAD
-            emailext body: 'Jenkins exp6: success', 
-                subject: 'Jenkins success',  
-                attachLog: true, 
-                to: 'kali.linuz09@gmail.com' 
-        } 
-        failure { 
-            emailext body: 'Jenkins exp6: failure',
-                subject: 'Jenkins failure',  
-                attachLog: true, 
-                to: 'kali.linuz09@gmail.com' 
-=======
             emailext emailext attachLog: true, body: 'I have attached the log for the build in the mail', subject: '6.2C_Build Successfull', to: 'kali.linuz09@gmail.com'
         } 
         failure { 
             emailext emailext attachLog: true, body: 'I have attached the log for the build in the mail', subject: '6.2C_Build Failure', to: 'kali.linuz09@gmail.com' 
->>>>>>> d8b73cf (Made changes to Email Extension)
         } 
     } 
 } 
